@@ -1,9 +1,11 @@
 // import React, { Component } from 'react';
 import { Checkbox, FormControlLabel, FormGroup } from '@mui/material';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 export default function Favorite ( { post, addToWeekday }) {
     // render() {
+    const [redirect, setRedirect ] = useState(false)
     const p = post // see Article.js for initial notes on props
     
 
@@ -34,7 +36,7 @@ export default function Favorite ( { post, addToWeekday }) {
                 <p className="card-text">{p.caption}</p>
                 <p className="card-text">{p.username}</p>
                 </Link> {/* have to add closing Link tag */}
-        <div className='Row'>
+        {/* <div className='Row'>
         <span>Add To: </span>
         <button onClick={()=>addToWeekday(p)}>M</button>
         <button onClick={()=>addToWeekday(p, 'Tue', 2)}>T</button>
@@ -43,7 +45,7 @@ export default function Favorite ( { post, addToWeekday }) {
         <button onClick={()=>addToWeekday(p, 'Fri', 5)}>F</button>
         <button onClick={()=>addToWeekday(p, 'Sat', 6)}>Sa</button>
         <button onClick={()=>addToWeekday(p, 'Sun', 7)}>Su</button>
-        </div> 
+        </div>  */}
         </div>
         </>
     )

@@ -92,15 +92,27 @@ export default function Favorites( { user }) {
     
 
 // render() {
-    return (
+    return postsState.posts == [] ?
+    (
+    <div class='text-center' style={{position:'relative'}}>
+    <h3>You do not have any favorites.</h3>
+    <h3> Please create an account or log in </h3>
+    <h3>to start saving your favorite recipes!</h3>
+    </div>
+    )
+    :
+    (
+
         <>
-            <div className='column'>
-                <div className='row justify-content-around'>
+        {console.log(postsState.posts)}
+        {console.log('false')}
+            <div clas='column'>
+                {/* <div className='row justify-content-around'>
                     {weekdays.map((w, i) => <Week weekdays={w} key={i}  />)}
                     {daysState.days.map((d, i) => <Week days={d} key={i} />)}
-                </div>
+                </div> */}
 
-                <div className='row justify-content-around'>
+                <div class='row justify-content-around'>
                     {postsState.posts.map((p, i) => <FavoritePost post={p} key={i} user={user} addToWeekday={addToWeekday}/>)}
                 </div>
 

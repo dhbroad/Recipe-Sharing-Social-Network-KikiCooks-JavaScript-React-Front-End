@@ -33,32 +33,60 @@ export default function SinglePost({ user, addToFavorites }) {
     (
         
         // Note: all the class= need to be changed to className= when copying from html to JSX
-        <>
-        <div>
-        <button onClick={()=>addToFavorites(post)}>Add To Favorites</button>
-        <div className="card" style={{ width: '50rem' }}>
-            <img src={post.image} className="card-img-top" alt={post.title} />
-            <div className="card-body">
-                <h5 className="card-title">{post.title}</h5>
-                <p className="card-text">{post.caption}</p>
-                <p className="card-text">{post.username}</p>
-                <p className="card-text">{post.ingredient1}</p>
-                <p className="card-text">{post.ingredient2}</p>
-                <p className="card-text">{post.ingredient3}</p>
-                <p className="card-text">{post.ingredient4}</p>
-                <p className="card-text">{post.ingredient5}</p>
-                <p className="card-text">{post.directions}</p>
+        <> 
+        <div className='row'>  
+            <div classname='col-xl'>
+                <button style={{position:'relative',width:'100px', height:'40px', background:'red',borderRadius:'10px', color:'white', marginright:'20px'}} onClick={()=> window.close()}>Back</button> 
+            </div> 
+            <div classname='col-xl'>
+                <div className="card mb-5" style={{ width: '50rem', marginleft:'20px'}}>
+                    <div className="card-header bg-transparent fw-bold">
+                            <a className="text-decoration-none text-reset" href={`/profile/${post.username}`}>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-person-fill" viewBox="0 2 16 16" style={{marginRight:'5px'}} >
+                                    <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                                    </svg>
+                                <span className="card-title">{post.username}</span>
+                            </a>
+                        </div>
+                        <img src={post.image} className="card-img-top" alt={post.title} />
+                        <div className="card-body">
+
+                        <div card>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h5 className="card-title" style={{display:"inline-block"}}>{post.title}</h5>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <button style={{float:"right"}} onClick={()=>addToFavorites(post)}>Add To Favorites</button>
+                                    </div>
+                                </div>
+                        </div>
+
+                            <p className="card-text">Cooktime: {post.cooktime} 
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-clock" viewBox="0 0 16 16">
+                                        <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z" />
+                                            <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z" />
+                                    </svg>
+                                </p>   
+                            <h5 className="card-title" style={{display:"inline-block"}}>Ingredients</h5>
+                            <p className="card-text">{post.ingredient1}</p>
+                            <p className="card-text">{post.ingredient2}</p>
+                            <p className="card-text">{post.ingredient3}</p>
+                            <p className="card-text">{post.ingredient4}</p>
+                            <p className="card-text">{post.ingredient5}</p>
+                            <p className="card-text">{post.directions}</p>
+                    </div>
+                </div>
+                    {
+                        post.user_id === user.id?
+                        <>
+                        <button color='primary' variant='contained'>Update</button>
+                        <button color='error' variant='contained'>Delete</button>
+                        </> :
+                        null
+                    }
             </div>
-        </div>
-        {
-            post.user_id === user.id?
-            <>
-            <button color='primary' variant='contained'>Update</button>
-            <button color='error' variant='contained'>Delete</button>
-            </> :
-            null
-        }
-        </div>
+        </div> 
         </>
 
     )

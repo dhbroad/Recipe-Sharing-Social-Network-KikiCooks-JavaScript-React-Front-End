@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Post from '../components/Post';
+import FavoritePost from '../components/FavoritePost';
 import { Navigate, useParams } from 'react-router-dom';
 
 export default function UserProfile({ user, addToFavorites }) {
@@ -37,8 +37,8 @@ export default function UserProfile({ user, addToFavorites }) {
         <>
         
         <div className='justify-content-around' >
-        <h1>{username}'s Profile</h1>
-        {state.posts.map((p, i) => <Post key={i} post={p}  user={user} addToFavorites={addToFavorites} />)} {/* took out this from this.posts.map*/}
+        <h1 style={{position:'relative'}}>{username}'s Profile</h1>
+        {state.posts.map((p, i) => <FavoritePost key={i} post={p}  user={user} addToFavorites={addToFavorites} />)} {/* took out this from this.posts.map*/}
       </div>
       </>
   )
