@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import './Post.css'
 
 export default function Post ( { post, addToFavorites }) {
     // render() {
@@ -34,7 +35,8 @@ export default function Post ( { post, addToFavorites }) {
                             <h5 className="card-title" style={{display:"inline-block",marginLeft:"15px", marginTop:"15px"}}>{p.title}</h5>
                         </div>
                         <div class="col-md-6">
-                            <button className="mt-3 font-weight-bold" style={{float:"right", marginRight:"15px", background:"darkseagreen", color:"white", borderRadius:"200px",padding:"5px 20px 5px 20px",fontWeight:'bold',fontSize:'small'}} onClick={()=>addToFavorites(p)}>ADD TO FAVORITES</button>
+                            <button className="mt-3 font-weight-bold add-to-favorites" 
+                                 onClick={()=>addToFavorites(p)}>ADD TO FAVORITES</button>
                         </div>
                     </div>
                 </div>

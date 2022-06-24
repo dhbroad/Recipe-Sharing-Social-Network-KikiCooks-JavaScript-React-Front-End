@@ -1,7 +1,7 @@
 import userEvent from '@testing-library/user-event';
 import React, { useEffect, useState } from 'react';
 import { Navigate, useParams } from 'react-router-dom'; // Need to import useParams to use the variable of the route /instagram/:postId <--variable
-
+import '../components/Post.css'
 
 
 
@@ -36,7 +36,7 @@ export default function SinglePost({ user, addToFavorites }) {
         <> 
         <div className='row'>  
             <div classname='col-xl'>
-                <button style={{position:'relative',width:'100px', height:'40px', background:'red',borderRadius:'10px', color:'white', marginright:'20px'}} onClick={()=> window.close()}>Back</button> 
+                <button className='back-button'  onClick={()=> window.close()}><i className='back-button-arrow'></i>Back</button> 
             </div> 
             <div classname='col-xl'>
                 <div className="card mb-5" style={{ width: '50rem', marginleft:'20px'}}>
@@ -57,7 +57,7 @@ export default function SinglePost({ user, addToFavorites }) {
                                         <h5 className="card-title" style={{display:"inline-block"}}>{post.title}</h5>
                                     </div>
                                     <div class="col-md-6">
-                                        <button style={{float:"right"}} onClick={()=>addToFavorites(post)}>Add To Favorites</button>
+                                        <button className='add-to-favorites' style={{float:"right"}} onClick={()=>addToFavorites(post)}>Add To Favorites</button>
                                     </div>
                                 </div>
                         </div>
