@@ -37,7 +37,7 @@ export default function Login({ logMeIn }) {
     };
     
         return redirect?
-        (<Navigate to='/instagram' />)
+        (<Navigate to='/' />)
         :
         (
             <div className='border col-12 col-xs-9 col-sm-8 col-lg-4'>
