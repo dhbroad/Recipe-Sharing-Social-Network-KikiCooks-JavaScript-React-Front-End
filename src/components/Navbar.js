@@ -47,7 +47,7 @@ export default function Navbar ({ currentUser, logMeOut, cart, sumTotalCart }) {
               }
               
               <li className="nav-item">
-                <a className="nav-link disabled" href="/" tabIndex="-1" aria-disabled="true">{currentUser.username}</a>
+                <a className="nav-link" href={'/user-posts/' + currentUser.username} aria-disabled="true">{currentUser.username}</a>
               </li>
             </ul>
             <form className="d-flex">

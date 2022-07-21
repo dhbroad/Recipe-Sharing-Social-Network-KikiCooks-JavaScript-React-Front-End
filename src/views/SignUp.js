@@ -29,6 +29,7 @@ const sendToFlask = async ( e ) => { // we add the parameter/variable e (which s
     if (data.status === 'ok') {
         setRedirect(true)
         setMessage(data.message)
+        
     }
     else {
         setMessage(data.message)
