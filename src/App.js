@@ -85,6 +85,26 @@ export default function App () { // creating a function called "App"
         }
   };
 
+  const searchBarQuery = async (e) => { // e stands for event
+    const res = await fetch("http://127.0.0.1:5000/api/search-bar-query", {
+        method: "GET",
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            content: e.entry,
+
+        })
+    });
+    const data = await res.json();
+        console.log(data)
+        if (data.status === 'ok') {
+            console.log('Search query successful.')
+            
+            
+        }
+  };
+
 //   componentDidMount() {
 //     // console.log("MAIN APP: I have mounted")
 //   }
