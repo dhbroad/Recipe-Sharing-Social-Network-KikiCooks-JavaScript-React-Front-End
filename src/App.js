@@ -8,6 +8,7 @@ import Favorites from './views/Favorites';
 import Home from './views/Home';
 import KC from './views/KC';
 import Login from './views/Login';
+import SearchResults from './views/SearchResults';
 import SignUp from './views/SignUp';
 import SinglePost from './views/SinglePost';
 import UserProfile from './views/UserProfile';
@@ -85,8 +86,8 @@ export default function App () { // creating a function called "App"
         }
   };
 
-  const searchBarQuery = async (e) => { // e stands for event
-    const res = await fetch("http://127.0.0.1:5000/api/search-bar-query", {
+  const searchBarQuery = async (e) => { 
+    const res = await fetch("http://127.0.0.1:5000/api/search", {
         method: "GET",
         headers: {
             'Content-Type': 'application/json',
@@ -142,6 +143,7 @@ export default function App () { // creating a function called "App"
             <Route path='/favorites' element={<Favorites user={user} />} />
             <Route path='/post/create' element = {<CreatePost user={user}/>} />
             <Route path='/profile/:username' element={<UserProfile user={user} addToFavorites={addToFavorites} />}/>
+            <Route path='/search/:searchQuery' element={<SearchResults user={user} addToFavorites={addToFavorites} />}/>
           </Routes>
         </div>
       </div>
