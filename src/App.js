@@ -33,9 +33,7 @@ export default function App () { // creating a function called "App"
 
     }
 
-    const [age, setState] = useState(9000);
     const [user, setUser] = useState(()=>getUserFromLocalStorage());
-    const [cart, setCart] = useState([])
 
 //   } <--This bracket was from the constructor method
   // #
@@ -43,7 +41,7 @@ export default function App () { // creating a function called "App"
   // #
 
   // In RFC, you need const in front of all of the functions below because they are no longer methods being defined inside a class, but they are stand alone functions
-  const logMeIn = (userObj) => { // we'll pass down the function logMeIn as a prop 
+  const logMeIn = (userObj) => { // we will pass down the function logMeIn as a prop down in the Return in the login path
     setUser(userObj) // for RFC, it changed from this.setState() to setUser and setting the user to the userObj object
     localStorage.setItem('vanguard_user', JSON.stringify(userObj)) // localStorage is a variable that exists right off the bat. setItem is a built in function to set the key and value for the local storage
     // we name the key something that is specific to our application instead of just "user", so we don't unintentionally interact with any other user instances. 
@@ -87,21 +85,26 @@ export default function App () { // creating a function called "App"
   };
 
   const searchBarQuery = async (e) => { 
-    const res = await fetch("http://127.0.0.1:5000/api/search", {
+    const res = await fetch(`http://127.0.0.1:5000/api/search/${e}`, {
         method: "GET",
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-            content: e.entry,
-
-        })
+        // headers: {
+        //     'Content-Type': 'application/json',
+        // },
+        // body: JSON.stringify({
+        //     content: e.entry,
+        // })
     });
     const data = await res.json();
         console.log(data)
         if (data.status === 'ok') {
             console.log('Search query successful.')
-            
+            const postResults = data.posts
+          const userResults = data.users
+            setState({
+                posts: postResults,
+                users: userResults
+            })
+        }
             
         }
   };
@@ -127,7 +130,7 @@ export default function App () { // creating a function called "App"
       <>
       {/* <div className="bg-light" style={{height:'100vh',width:'100vw',zindex:'0',position:'absolute'}}></div> */}
       <div className='container-fluid'>
-        <Navbar currentUser={user} logMeOut={logMeOut}/> {/* we are creating an instance and passing through currentUser and logMeOut to Navbar (refered to as props) */}
+        <Navbar currentUser={user} searchBarQuery={searchBarQuery} logMeOut={logMeOut}/> {/* we are creating an instance and passing through currentUser and logMeOut to Navbar (refered to as props) */}
             {/* Note: when you acces these "props" in your Navbar.js, they will be called using the syntax {this.props.currentUser} or {this.logMeOut} */}
         {/* <h1>Hi, I am {this.state['name']} and my age is {this.state.age}</h1>
         <button onClick={()=>this.happyBirthday()}>Happy Birthday</button> */}

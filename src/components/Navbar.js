@@ -50,7 +50,7 @@ export default function Navbar ({ currentUser, logMeOut, cart, sumTotalCart }) {
                 <a className="nav-link" href={'/user-posts/' + currentUser.username} aria-disabled="true">{currentUser.username}</a>
               </li>
             </ul>
-            <form className="d-flex">
+            <form onSubmit={(e)=>searchBarQuery(e)} id='search_form' className="d-flex">
               <input className="form-control me-2" type="search" placeholder="Search a food or user" aria-label="Search" />
               <button className="btn btn-outline-success" type="submit">Search</button>
             </form>
