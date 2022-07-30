@@ -5,12 +5,6 @@ import FavoritePost from '../components/FavoritePost';
 import Week from '../components/Week';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 
-// 
-// 
-// See News.js for line by line comments on working with RCC (React Class Components)
-// 
-// 
-
 export default function Favorites( { user }) {
   // constructor(){
   //     super();

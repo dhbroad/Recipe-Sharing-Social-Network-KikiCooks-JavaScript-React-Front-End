@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import FavoritePost from '../components/FavoritePost';
 import { Navigate, useParams } from 'react-router-dom';
 
-export default function SearchResults(user, addToFavorites) {
+export default function SearchResults({user, addToFavorites}) {
     const [redirect, setRedirect ] = useState(false)
     const { searchInput } = useParams()
 
@@ -12,7 +12,7 @@ export default function SearchResults(user, addToFavorites) {
         users: []
       })
     
-    const sendSearchToFlask = async(e) => {
+    
       useEffect(async () => { 
         const res = await fetch(`http://127.0.0.1:5000/api/search/${searchInput}`);
         const data = await res.json();

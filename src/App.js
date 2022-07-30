@@ -27,7 +27,7 @@ export default function App () { // creating a function called "App"
     const getUserFromLocalStorage = () => {
         const foundUser = localStorage.getItem('vanguard_user')
         if (foundUser) {
-            return JSON.parse(foundUser) // doing the parsing conversion 0that turns the string into the JSON object of key value pairs
+            return JSON.parse(foundUser) // doing the parsing conversion that turns the string into the JSON object of key value pairs
         }
         return {}
 
@@ -84,30 +84,29 @@ export default function App () { // creating a function called "App"
         }
   };
 
-  const searchBarQuery = async (e) => { 
-    const res = await fetch(`http://127.0.0.1:5000/api/search/${e}`, {
-        method: "GET",
-        // headers: {
-        //     'Content-Type': 'application/json',
-        // },
-        // body: JSON.stringify({
-        //     content: e.entry,
-        // })
-    });
-    const data = await res.json();
-        console.log(data)
-        if (data.status === 'ok') {
-            console.log('Search query successful.')
-            const postResults = data.posts
-          const userResults = data.users
-            setState({
-                posts: postResults,
-                users: userResults
-            })
-        }
+  // const searchBarQuery = async (e) => { 
+  //   const res = await fetch(`http://127.0.0.1:5000/api/search/${e}`, {
+  //       method: "GET",
+  //       // headers: {
+  //       //     'Content-Type': 'application/json',
+  //       // },
+  //       // body: JSON.stringify({
+  //       //     content: e.entry,
+  //       // })
+  //   });
+  //   const data = await res.json();
+  //       console.log(data)
+  //       if (data.status === 'ok') {
+  //           console.log('Search query successful.')
+  //           const postResults = data.posts
+  //         const userResults = data.users
+  //           setState({
+  //               posts: postResults,
+  //               users: userResults
+  //           })
+  //       }
             
-        }
-  };
+  //       };
 
 //   componentDidMount() {
 //     // console.log("MAIN APP: I have mounted")

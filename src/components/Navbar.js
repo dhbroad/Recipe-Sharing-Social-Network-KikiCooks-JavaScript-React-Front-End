@@ -1,10 +1,18 @@
 import React, { Component } from 'react'; // React is the default export of the base react file. Component is not a default export, so we have to add {} around it
 import { Link } from 'react-router-dom';
 import './Navbar.css' // This css had to be imported manually so we could style our navbar
-import { FaShoppingCart } from 'react-icons/fa'
 
-export default function Navbar ({ currentUser, logMeOut, cart, sumTotalCart }) { // You can only have one "default" export (which is the main thing that the module exports). When importing in another file, if the thing you are trying to export is not the default, you have to put it in {}. If it's the default, you don't need the {} when importing
+export default function Navbar ({ currentUser, logMeOut }) { // You can only have one "default" export (which is the main thing that the module exports). When importing in another file, if the thing you are trying to export is not the default, you have to put it in {}. If it's the default, you don't need the {} when importing
   
+  const navigate = useNavigate();
+
+  const handleSubmit = event => {
+    event.preventDefaults(e);
+    navigate(`/search/${e}`)
+  }
+
+
+
   // render() { <--Render is only needed in React Class Components, and we converted Navbar.js into a React Function Component in Week-9-day-1
     return (
       <nav className="navbar fixed-top navbar-expand-lg navbar-light bg-light my-nav">
@@ -50,7 +58,10 @@ export default function Navbar ({ currentUser, logMeOut, cart, sumTotalCart }) {
                 <a className="nav-link" href={'/user-posts/' + currentUser.username} aria-disabled="true">{currentUser.username}</a>
               </li>
             </ul>
-            <form onSubmit={(e)=>searchBarQuery(e)} id='search_form' className="d-flex">
+            {/* <form onSubmit={(e)=>searchBarQuery(e)} id='search_form' className="d-flex">
+              <input className="form-control me-2" type="search" placeholder="Search a food or user" aria-label="Search" />
+              <button className="btn btn-outline-success" type="submit">Search</button> */}
+              <form onSubmit={(e)=>handleSubmit(e)} id='search_form' className="d-flex">
               <input className="form-control me-2" type="search" placeholder="Search a food or user" aria-label="Search" />
               <button className="btn btn-outline-success" type="submit">Search</button>
             </form>
