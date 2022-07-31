@@ -4,6 +4,7 @@ import Navbar from './components/Navbar';
 import About from './views/About';
 import Contact from './views/Contact';
 import CreatePost from './views/CreatePost';
+import FailedSearch from './views/FailedSearch';
 import Favorites from './views/Favorites';
 import Home from './views/Home';
 import KC from './views/KC';
@@ -129,7 +130,7 @@ export default function App () { // creating a function called "App"
       <>
       {/* <div className="bg-light" style={{height:'100vh',width:'100vw',zindex:'0',position:'absolute'}}></div> */}
       <div className='container-fluid'>
-        <Navbar currentUser={user} searchBarQuery={searchBarQuery} logMeOut={logMeOut}/> {/* we are creating an instance and passing through currentUser and logMeOut to Navbar (refered to as props) */}
+        <Navbar currentUser={user} logMeOut={logMeOut}/> {/* we are creating an instance and passing through currentUser and logMeOut to Navbar (refered to as props) */}
             {/* Note: when you acces these "props" in your Navbar.js, they will be called using the syntax {this.props.currentUser} or {this.logMeOut} */}
         {/* <h1>Hi, I am {this.state['name']} and my age is {this.state.age}</h1>
         <button onClick={()=>this.happyBirthday()}>Happy Birthday</button> */}
@@ -146,6 +147,7 @@ export default function App () { // creating a function called "App"
             <Route path='/post/create' element = {<CreatePost user={user}/>} />
             <Route path='/profile/:username' element={<UserProfile user={user} addToFavorites={addToFavorites} />}/>
             <Route path='/search/:searchQuery' element={<SearchResults user={user} addToFavorites={addToFavorites} />}/>
+            <Route path='/failed-search' element={<FailedSearch />} />
           </Routes>
         </div>
       </div>

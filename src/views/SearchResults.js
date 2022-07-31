@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import FavoritePost from '../components/FavoritePost';
 import { Navigate, useParams } from 'react-router-dom';
+import Users from '../components/Users';
+import Post from '../components/Post';
 
 export default function SearchResults({user, addToFavorites}) {
+    
     const [redirect, setRedirect ] = useState(false)
-    const { searchInput } = useParams()
+    const { searchQuery } = useParams()
+    console.log(searchQuery)
 
 
     const [state, setState] = useState({
@@ -14,7 +17,7 @@ export default function SearchResults({user, addToFavorites}) {
     
     
       useEffect(async () => { 
-        const res = await fetch(`http://127.0.0.1:5000/api/search/${searchInput}`);
+        const res = await fetch(`http://127.0.0.1:5000/api/search/${searchQuery}`);
         const data = await res.json();
         console.log(data)
     
@@ -38,14 +41,18 @@ export default function SearchResults({user, addToFavorites}) {
     :
     (
         <>
-        <h1>Search Results for: {searchInput} </h1>
+        <div className="">
         <div>
+        <h1>Search Results for: {searchQuery} </h1>
+        </div>
+        <div className='justify-content-around column'>
             <h3>Users</h3>
             {state.users.map((u, i) => <Users key={i} users={u}  user={user} />)}
         </div>
         <div className='justify-content-around' >
-        <h1 style={{position:'relative'}}>{username}'s Profile</h1>
+        <h3>Posts</h3>
         {state.posts.map((p, i) => <Post key={i} post={p}  user={user} addToFavorites={addToFavorites} />)}
+      </div>
       </div>
       </>
   )

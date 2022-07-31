@@ -5,7 +5,7 @@ import { Navigate, useParams } from 'react-router-dom';
 export default function UserProfile({ user, addToFavorites }) {
     const [redirect, setRedirect ] = useState(false)
     const { username } = useParams()
-
+    console.log(username)
 
     const [state, setState] = useState({
         posts: []

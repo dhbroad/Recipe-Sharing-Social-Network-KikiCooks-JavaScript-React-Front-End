@@ -1,5 +1,5 @@
 import React, { Component } from 'react'; // React is the default export of the base react file. Component is not a default export, so we have to add {} around it
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './Navbar.css' // This css had to be imported manually so we could style our navbar
 
 export default function Navbar ({ currentUser, logMeOut }) { // You can only have one "default" export (which is the main thing that the module exports). When importing in another file, if the thing you are trying to export is not the default, you have to put it in {}. If it's the default, you don't need the {} when importing
@@ -7,8 +7,10 @@ export default function Navbar ({ currentUser, logMeOut }) { // You can only hav
   const navigate = useNavigate();
 
   const handleSubmit = event => {
-    event.preventDefaults(e);
-    navigate(`/search/${e}`)
+    event.preventDefault();
+    console.log(`searching for ${event.target[0].value}`)
+    navigate('/')
+    navigate(`/search/${event.target[0].value}`)
   }
 
 
@@ -23,9 +25,9 @@ export default function Navbar ({ currentUser, logMeOut }) { // You can only hav
           </button>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-              <li className="nav-item">
+              {/* <li className="nav-item">
                 <Link className="nav-link active" aria-current="page" to="/">Home</Link>
-              </li>
+              </li> */}
               <li className="nav-item">
                 <Link className="nav-link" aria-current="page" to="/favorites">Favorites</Link>
               </li>
@@ -53,7 +55,9 @@ export default function Navbar ({ currentUser, logMeOut }) { // You can only hav
                   </li>
                 </>
               }
-              
+              <li className="nav-item">
+                <a className="nav-link">:</a>
+              </li>
               <li className="nav-item">
                 <a className="nav-link" href={'/user-posts/' + currentUser.username} aria-disabled="true">{currentUser.username}</a>
               </li>
