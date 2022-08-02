@@ -43,10 +43,10 @@ export default function SearchResults({user, addToFavorites}) {
         <>
         <div className="">
         <div>
-        <h1>Search Results for: {searchQuery} </h1>
+        <h1 className='mb-4'>Search Results for: {searchQuery} </h1>
         </div>
-        <div className='justify-content-around column'>
-            <h3>Users</h3>
+        <div className='justify-content-around column mb-2'>
+            <h3 className='mb-4'>Users</h3>
             {state.users.map((u, i) => <Users key={i} users={u}  user={user} />)}
         </div>
         <div className='justify-content-around' >

@@ -9,10 +9,9 @@ export default function Navbar ({ currentUser, logMeOut }) { // You can only hav
   const handleSubmit = event => {
     event.preventDefault();
     console.log(`searching for ${event.target[0].value}`)
-    navigate('/')
     navigate(`/search/${event.target[0].value}`)
+    window.location.reload(false)
   }
-
 
 
   // render() { <--Render is only needed in React Class Components, and we converted Navbar.js into a React Function Component in Week-9-day-1
