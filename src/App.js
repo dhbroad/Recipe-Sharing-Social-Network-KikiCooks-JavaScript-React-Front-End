@@ -56,7 +56,7 @@ export default function App () { // creating a function called "App"
 
 
   const addToFavorites = async (e) => { // e stands for event
-    const res = await fetch("http://127.0.0.1:5000/api/favorite-post", {
+    const res = await fetch("https://kikicooks-database.herokuapp.com/api/favorite-post", {
         method: "POST",
         headers: {
             'Content-Type': 'application/json',
