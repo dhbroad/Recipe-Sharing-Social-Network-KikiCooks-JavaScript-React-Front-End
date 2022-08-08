@@ -25,7 +25,7 @@ export default function Post ( { post, addToFavorites, user }) {
                 </Link>
             </div>
             
-            <Link to={`/kikicooks/${p.id}`} className="card text-decoration-none text-dark" style={{ width: '35rem' }} target='_blank'> {/* <a href= was changed to <Link to= and Link has to be imported */}
+            <Link to={`/kikicooks/${p.id}`} className="card text-decoration-none text-dark main-body-of-post"  target='_blank'> {/* <a href= was changed to <Link to= and Link has to be imported */}
             
                 <img src={p.image} className="card-img-top" alt={p.title} /> {/* <img> needs to have a closing / in JSX so we added it at the end <img /> */}
                 </Link> {/* have to add closing Link tag */}
