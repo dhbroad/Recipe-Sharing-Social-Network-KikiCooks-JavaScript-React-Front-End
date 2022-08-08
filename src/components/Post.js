@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import './Post.css'
 
-export default function Post ( { post, addToFavorites }) {
+export default function Post ( { post, addToFavorites, user }) {
     // render() {
     const p = post // see Article.js for initial notes on props
     
@@ -34,10 +34,13 @@ export default function Post ( { post, addToFavorites }) {
                         <div class="col-md-6">
                             <h5 className="card-title" style={{display:"inline-block",marginLeft:"15px", marginTop:"15px"}}>{p.title}</h5>
                         </div>
-                        <div class="col-md-6">
-                            <button className="mt-3 font-weight-bold add-to-favorites" 
-                                 onClick={()=>addToFavorites(p)}>ADD TO FAVORITES</button>
-                        </div>
+                        {user.username ?
+                            <div class="col-md-6">
+                                <button className="mt-3 font-weight-bold add-to-favorites" 
+                                    onClick={()=>addToFavorites(p)}>ADD TO FAVORITES</button>
+                            </div>
+                            :
+                            (<></>)}
                     </div>
                 </div>
 
